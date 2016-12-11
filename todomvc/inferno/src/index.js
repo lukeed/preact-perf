@@ -78,12 +78,12 @@ class App extends Component {
 				<Head onEnter={ this.add } />
 
 				{ num ? (
-					<section className="main">
-						<input className="toggle-all" type="checkbox"
+					<section id="main">
+						<input id="toggle-all" type="checkbox"
 							onClick={ this.toggleAll } checked={ numAct === 0 }
 						/>
 
-						<ul className="todo-list">
+						<ul id="todo-list">
 							{
 								shown.map(t =>
 									<Item data={t}
@@ -109,4 +109,4 @@ class App extends Component {
 	}
 }
 
-render(<App />, document.getElementById('app'));
+render(<App />, document.getElementById('todoapp'));

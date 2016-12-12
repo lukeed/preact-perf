@@ -6,9 +6,9 @@ import { states, pluralize } from './share';
  */
 export function Head(props) {
 	return (
-		<header className="header">
+		<header id="header">
 			<h1>todos</h1>
-			<input className="new-todo" autofocus onKeyDown={ props.onEnter }
+			<input id="new-todo" autofocus onKeyDown={ props.onEnter }
 				autocomplete="off" placeholder="What needs to be done?"
 			/>
 		</header>
@@ -26,11 +26,11 @@ export const links = [
  */
 export function Foot(props) {
 	return (
-		<footer className="footer">
-				<span className="todo-count">
+		<footer id="footer">
+				<span id="todo-count">
 					<strong>{ props.left }</strong> { pluralize(props.left, 'item') } left
 				</span>
-				<ul className="filters">
+				<ul id="filters">
 					{
 						links.map(function (link) {
 							return (
@@ -42,7 +42,7 @@ export function Foot(props) {
 					}
 				</ul>
 				{ props.done > 0 ? (
-					<button className="clear-completed" onClick={ props.onClear }>Clear completed</button>
+					<button id="clear-completed" onClick={ props.onClear }>Clear completed</button>
 				) : null }
 			</footer>
 	);

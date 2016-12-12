@@ -77,12 +77,12 @@ class App extends Component {
 				<Head onEnter={ addTodo } />
 
 				{ num ? (
-					<section className="main">
-						<input className="toggle-all" type="checkbox"
+					<section id="main">
+						<input id="toggle-all" type="checkbox"
 							onClick={ toggleAll } checked={ numAct === 0 }
 						/>
 
-						<ul className="todo-list">
+						<ul id="todo-list">
 							{
 								shown.map(function (t) {
 									return (
@@ -109,4 +109,4 @@ class App extends Component {
 	}
 }
 
-Inferno.render(<App />, document.getElementById('app'));
+Inferno.render(<App />, document.getElementById('todoapp'));

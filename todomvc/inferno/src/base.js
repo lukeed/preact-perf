@@ -1,14 +1,14 @@
 import Inferno from 'inferno';
-import { states } from './share';
+import { states, pluralize } from './share';
 
 /**
  * Stateless Header component
  */
-export function Head({onEnter}) {
+export function Head(props) {
 	return (
-		<header id="header">
+		<header className="header">
 			<h1>todos</h1>
-			<input id="new-todo" autofocus onkeydown={ onEnter }
+			<input className="new-todo" autofocus onKeyDown={ props.onEnter }
 				autocomplete="off" placeholder="What needs to be done?"
 			/>
 		</header>
@@ -24,25 +24,25 @@ export const links = [
 /**
  * Stateless Footer component
  */
-export function Foot({left, done, route, onClear}) {
+export function Foot(props) {
 	return (
-		<footer id="footer">
-				<span id="todo-count">
-					<strong>{ left }</strong> { left > 1 ? 'items' : 'item' } left
+		<footer className="footer">
+				<span className="todo-count">
+					<strong>{ props.left }</strong> { pluralize(props.left, 'item') } left
 				</span>
-				<ul id="filters">
+				<ul className="filters">
 					{
-						links.map(({hash, name}) => (
-							<li>
-								<a href={ hash } className={ name.toLowerCase() === route ? 'selected' : '' }>
-									{ name }
-								</a>
-							</li>
-						))
+						links.map(function (link) {
+							return (
+								<li>
+									<a href={ link.hash } className={ link.name.toLowerCase() === props.route ? 'selected' : '' }>{ link.name }</a>
+								</li>
+							)
+						})
 					}
 				</ul>
-				{ done > 0 ? (
-					<button id="clear-completed" onClick={ onClear }>Clear completed</button>
+				{ props.done > 0 ? (
+					<button className="clear-completed" onClick={ props.onClear }>Clear completed</button>
 				) : null }
 			</footer>
 	);
